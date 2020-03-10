@@ -1,0 +1,98 @@
+{include file="public/_head" /}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <h1 class="article-title">{$articles.title}</h1>
+            <div class="status">{$articles.reading}阅读-{$articles.comment_num}评论-作者：{$articles.author}
+                <span class="label label-default">{$articles.tags}</span>
+            </div>
+            <div class="article-content">
+                <blockquote>
+                    文章的概要
+                </blockquote>
+                {$articles.desc}
+                <blockquote>
+                    文章的内容
+                </blockquote>
+                {$articles.content|raw}
+            </div>
+            <div class="article-comment">
+                <div class="page-header"><b>相关评论</b></div>
+                <div class="comment-content">
+                    <form>
+                        <input type="hidden" name="article_id" value="{$articles.id}">
+                        <input type="hidden" name="member_id" value="{:session('index.id')}">
+                        <div class="form-group">
+                            <textarea class="form-control" id="comment" name="comment" rows="5" cols=""></textarea>
+                        </div>
+                        <div class="form-group pull-right">
+                            <button class="btn btn-primary" id="com">评论（请认真评论）</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"></div>
+                {volist name="articleComment.comments" id="vo"}
+                <div class="comment-list">
+                    <div class="comment-list-item">
+                        <div class="info">{$vo.member.nickname}<small>{$vo.create_time}</small></div>
+                        <div class="content">{$vo.content}</div>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="affix">
+                <div class="page-header h3">推荐文章</div>
+                <div class="topic-list">
+                    {volist name="articlesInfo" id="vo"}
+                    <div class="topic-list-item">
+                        <a href="{:url('index/articles/articles',['id' => $vo.id])}" class="title">{$vo.title}</a>
+                    </div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/_footer" /}
+<script>
+    $(function () {
+        $('#com').click(function () {
+            if ("{:session('?index.id')}"){
+                $.ajax({
+                    url:"{:url('index/articles/com')}",
+                    type:'post',
+                    data:$('form').serialize(),
+                    dataType:'json',
+                    success:function (data) {
+                        if (data.code == 1){
+                            layer.msg(data.msg,{
+                                icon:6,
+                                time:2000
+                            },function () {
+                                location.href = data.url;
+                            });
+                        }else {
+                            layer.open({
+                                title: '登录失败',
+                                content: data.msg,
+                                icon: 5,
+                                anim: 6
+                            });
+                        }
+                    }
+                });
+            }else {
+                layer.msg('请先登录',{
+                    icon:5,
+                    time:2000
+                },function () {
+                    location.href = "{:url('index/index/login')}";
+                });
+            }
+            return false;
+        });
+    });
+</script>
+

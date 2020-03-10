@@ -1,0 +1,39 @@
+<div class="footer">
+<p>版权所有{$webInfo.copyright}<a href="#">www.woolgather.tk</a> All Rights Reserved</p>
+</div>
+
+<script src="/static/index/js/jquery-3.3.1.min.js"></script>
+<script src="/static/index/js/bootstrap.min.js"></script>
+<script src="/static/lib/layer/layer.js"></script>
+
+<script>
+    $(function () {
+        $('#exit').click(function () {
+            $.ajax({
+                url:"{:url('index/index/exit')}",
+                type:'post',
+                dataType:'json',
+                success:function (data) {
+                    if (data.code == 1){
+                        layer.msg(data.msg,{
+                            icon:6,
+                            time:2000
+                        },function () {
+                            location.href = data.url;
+                        });
+                    }else {
+                        layer.open({
+                            title:'退出失败！！！',
+                            content:data.msg,
+                            icon: 5,
+                            anim: 6
+                        });
+                    }
+                }
+            });
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

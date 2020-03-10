@@ -1,0 +1,40 @@
+{include file="public/_head" /}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="animated fadeInDown">Mr.D博客系统</h1>
+        <p class="animated shake">Mr.D博客系统是一个个人博客系统，欢迎大家随时访问！！！</p>
+        <h2 class="animated fadeInUp">商务合作QQ: <a href="http://wpa.qq.com/msgrd?v=3&uin=305530751&site=qq&menu=yes" target="_blank">1123512653</a></h2>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-8">
+            <div class="page-header h3">{$catename}</div>
+            <div class="article-list">
+                {volist name="articleInfo" id="vo"}
+                <div class="article-list-item">
+                    <a href="{:url('index/articles/articles',['id' => $vo.id])}" class="title">{$vo.title}</a>
+                    <div class="info">
+                        <span class="author">作者：{$vo.author}</span>-
+                        <span class="time">发布时间：{$vo.create_time}</span>-
+                        <span class="read">阅读：{$vo.reading}</span>-
+                        <span class="comment">评论量：{$vo.comment_num}</span>
+                    </div>
+                </div>
+                {/volist}
+            </div>
+            <nav class="">
+                {$articleInfo->render()|raw}
+            </nav>
+        </div>
+        <div class="col-sm-12 col-md-4">
+            <div class="page-header h3">推荐文章</div>
+            <div class="topic-list">
+                {volist name="articlesInfo" id="vo"}
+                <div class="topic-list-item">
+                    <a href="{:url('index/articles/articles',['id' => $vo.id])}" class="title">{$vo.title}</a>
+                </div>
+                {/volist}
+            </div>
+        </div>
+    </div>
+</div>
+{include file="public/_footer" /}

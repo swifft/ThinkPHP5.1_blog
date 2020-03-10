@@ -32,4 +32,4 @@
 
 ![5](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/5.PNG)
 
-![6](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/6.PNG
+![6](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/6.PNG)

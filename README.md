@@ -22,14 +22,14 @@
 
 ## 效果展示
 
-![](D:\tp_blog\images\1.PNG)
+![](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/1.PNG)
 
-![2](D:\tp_blog\images\2.PNG)
+![2](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/2.PNG)
 
-![3](D:\tp_blog\images\3.PNG)
+![3](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/3.PNG)
 
-![4](D:\tp_blog\images\4.PNG)
+![4](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/4.PNG)
 
-![5](D:\tp_blog\images\5.PNG)
+![5](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/5.PNG)
 
-![6](D:\tp_blog\images\6.PNG
+![6](https://github.com/swifft/ThinkPHP5.1_blog/blob/master/images/6.PNG
